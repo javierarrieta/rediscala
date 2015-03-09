@@ -37,9 +37,9 @@ object Dependencies {
 }
 
 object RediscalaBuild extends Build {
-  val baseSourceUrl = "https://github.com/etaty/rediscala/tree/"
+  val baseSourceUrl = "https://github.com/javierarrieta/rediscala/tree/"
 
-  val v = "1.4.2"
+  val v = "1.4.2-HOTFIX01"
 
   lazy val standardSettings = Defaults.defaultSettings ++
     Seq(
@@ -47,12 +47,12 @@ object RediscalaBuild extends Build {
       version := v,
       organization := "com.etaty.rediscala",
       scalaVersion := "2.10.4",
-      crossScalaVersions := Seq("2.11.2", "2.10.4"),
+      crossScalaVersions := Seq("2.11.5", "2.10.4"),
       licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html")),
       resolvers ++= Resolvers.resolversList,
 
       publishMavenStyle := true,
-      git.gitRemoteRepo := "git@github.com:etaty/rediscala.git",
+      git.gitRemoteRepo := "git@github.com:javierarrieta/rediscala.git",
 
       scalacOptions in (Compile, doc) <++= baseDirectory in LocalProject("rediscala") map { bd =>
         Seq(
@@ -60,7 +60,7 @@ object RediscalaBuild extends Build {
         )
       },
       autoAPIMappings := true,
-      apiURL := Some(url("http://etaty.github.io/rediscala/")),
+      apiURL := Some(url("http://javierarrieta.github.io/rediscala/")),
       scalacOptions in (Compile, doc) <++= version in LocalProject("rediscala") map { version =>
         val branch = if(version.trim.endsWith("SNAPSHOT")) "master" else version
         Seq[String](
@@ -86,8 +86,6 @@ object RediscalaBuild extends Build {
     settings = standardSettings ++ Seq(
       libraryDependencies ++= Dependencies.rediscalaDependencies
     )
-      ++ ScoverageSbtPlugin.instrumentSettings
-      ++ CoverallsPlugin.coverallsSettings
   ).configs(BenchTest)
     //.settings(benchTestSettings: _* )
 

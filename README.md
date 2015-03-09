@@ -20,10 +20,10 @@ From version 1.3.1:
  * use Bintray repo: https://bintray.com/etaty/maven/rediscala/view/general
 
 ```scala
-resolvers += "rediscala" at "http://dl.bintray.com/etaty/maven"
+resolvers += "rediscala" at "http://dl.bintray.com/javierarrieta/maven"
 
 libraryDependencies ++= Seq(
-  "com.etaty.rediscala" %% "rediscala" % "1.4.0"
+  "com.etaty.rediscala" %% "rediscala" % "1.4.2-HOTFIX01"
 )
 ```
 
